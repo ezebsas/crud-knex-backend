@@ -27,28 +27,29 @@ router.get('/:id/edit', (req,res) => {
 });
 
 router.post('/', (req, res) => {
-  if(validTodo(req.body)){
-    const todo = {
-      title: req.body.title,
-      description: req.body.description,
-      priority: req.body.priority,
-      date: new Date()
-    };
-    //insert into the database
+  validateTodoRenderError(req, res, (todo) => {
+    todo.date = new Date();
     knex('todo')
       .insert(todo, 'id')
       .then(ids => {
         const id = ids[0];
         res.redirect(`/todo/${id}`);
-      })
-  }else{
-    //respond with an error
-    res.status(500);
-    res.render('error', {
-      message: 'Invali todo'
-    });
-  }
+      });
+  });
 });
+
+router.put('/:id', (req, res) => {
+  validateTodoRenderError(req, res, (todo) => {
+    const id = req.params.id;
+    knex('todo')
+      .where('id', id)
+      .update(todo, 'id')
+      .then(() => {
+        res.redirect(`/todo/${id}`);
+      });
+  });
+});
+
 
 function validTodo(todo) {
   return typeof todo.title == 'string' &&
@@ -76,6 +77,23 @@ function respondAndRenderTodo(id, res, viewName) {
 
 function validId(id) {
   return !isNaN(id);
+}
+
+function validateTodoRenderError(req, res, callback) {
+  if(validTodo(req.body)) {
+    const todo = {
+      title: req.body.title,
+      description: req.body.description,
+      priority: req.body.priority
+    };
+
+    callback(todo);
+  } else {
+    res.status( 500);
+    res.render('error', {
+      message:  'Invalid todo'
+    });
+  }
 }
 
 module.exports = router;
