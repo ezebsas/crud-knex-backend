@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const queries = require('../db/queries');
 const validTodo = require('../../lib/validations').validTodo;
+const validId = require('../../lib/validations').validId;
+const setStatusRenderError = require('../../lib/responseHelpers').setStatusRenderError;
 
 /* This router is mounted at /todo */
 router.get('/', (req, res) => {
@@ -59,10 +61,7 @@ router.delete('/:id', (req, res) => {
         res.redirect('/todo');
       });
   } else {
-    res.status( 500);
-    res.render('error', {
-      message:  'Invalid id'
-    });
+    setStatusRenderError(res, 500, 'Invalid id');
   }
 });
 
@@ -75,16 +74,10 @@ function respondAndRenderTodo(id, res, viewName) {
         res.render(viewName, todo);
       });
   } else {
-    res.status( 500);
-    res.render('error', {
-      message:  'Invalid id'
-    });
+    setStatusRenderError(res, 500, 'Invalid id');
   }
 }
 
-function validId(id) {
-  return !isNaN(id);
-}
 
 function validateTodoRenderError(req, res, callback) {
   if(validTodo(req.body)) {
@@ -96,10 +89,7 @@ function validateTodoRenderError(req, res, callback) {
 
     callback(todo);
   } else {
-    res.status( 500);
-    res.render('error', {
-      message:  'Invalid todo'
-    });
+    setStatusRenderError(res, 500, 'Invalid todo');
   }
 }
 
