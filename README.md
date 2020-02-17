@@ -16,6 +16,6 @@ La aplicación usa:
 * [x] Crear un registro con POST /todo
 * [x] Mostrar un registro con GET /todo/:id
 * [x] Mostrar un formulario de edicion con GET /todo/:id/edit
-* [ ] Actualizar un registro con PUT /todo:id
-* [ ] Eliminar un registro con DELETE /todo/:id
-* [ ] Redirigir al crear / actualizar / eliminar
+* [x] Actualizar un registro con PUT /todo:id
+* [x] Eliminar un registro con DELETE /todo/:id
+* [x] Redirigir al crear / actualizar / eliminar

@@ -50,6 +50,22 @@ router.put('/:id', (req, res) => {
   });
 });
 
+router.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  if(validId(id)) {
+    knex('todo')
+      .where('id', id)
+      .del()
+      .then(() => {
+        res.redirect('/todo');
+      });
+  } else {
+    res.status( 500);
+    res.render('error', {
+      message:  'Invalid id'
+    });
+  }
+});
 
 function validTodo(todo) {
   return typeof todo.title == 'string' &&
