@@ -24,5 +24,5 @@ La aplicación usa:
 
 * [x] Actualizar validaciones
 * [x] Mover metodos comunes a carpeta lib
-* [ ] Mover consultas knex a carpeta db
+* [x] Mover consultas knex a carpeta db
 * [ ] Crear funciones reutilizables para mandar respuestas de error

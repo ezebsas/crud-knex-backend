@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const knex = require('../db/knex');
+const queries = require('../db/queries');
 const validTodo = require('../../lib/validations').validTodo;
 
 /* This router is mounted at /todo */
 router.get('/', (req, res) => {
-  knex('todo')
-    .select()
+  queries.
+    getAll()
     .then(todos => {
       res.render('all', { todos: todos });
     });
@@ -30,8 +30,8 @@ router.get('/:id/edit', (req,res) => {
 router.post('/', (req, res) => {
   validateTodoRenderError(req, res, (todo) => {
     todo.date = new Date();
-    knex('todo')
-      .insert(todo, 'id')
+    queries.
+      create(todo)
       .then(ids => {
         const id = ids[0];
         res.redirect(`/todo/${id}`);
@@ -42,9 +42,8 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   validateTodoRenderError(req, res, (todo) => {
     const id = req.params.id;
-    knex('todo')
-      .where('id', id)
-      .update(todo, 'id')
+    queries
+      .update(id, todo)
       .then(() => {
         res.redirect(`/todo/${id}`);
       });
@@ -54,9 +53,8 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
   if(validId(id)) {
-    knex('todo')
-      .where('id', id)
-      .del()
+    queries
+      .delete(id)
       .then(() => {
         res.redirect('/todo');
       });
@@ -71,10 +69,8 @@ router.delete('/:id', (req, res) => {
 
 function respondAndRenderTodo(id, res, viewName) {
   if(validId(id)) {
-    knex('todo')
-      .select()
-      .where('id', id)
-      .first()
+    queries.
+      getOne(id)
       .then(todo => {
         res.render(viewName, todo);
       });
