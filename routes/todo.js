@@ -17,21 +17,13 @@ router.get('/new', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const id = req.params.id;
-  if(typeof id != 'undefined') {
-    knex('todo')
-      .select()
-      .where('id', id)
-      .first()
-      .then(todo => {
-        res.render('single', todo);
-      });
-  } else {
-    res.status( 500);
-    res.render('error', {
-      message:  'Invalid Id'
-    });
-  }
+  respondAndRenderTodo(id, res, 'single');
 
+});
+
+router.get('/:id/edit', (req,res) => {
+  const id = req.params.id;
+  respondAndRenderTodo(id, res, 'edit');
 });
 
 router.post('/', (req, res) => {
@@ -65,5 +57,25 @@ function validTodo(todo) {
           !isNaN(todo.priority);
 }
 
+function respondAndRenderTodo(id, res, viewName) {
+  if(validId(id)) {
+    knex('todo')
+      .select()
+      .where('id', id)
+      .first()
+      .then(todo => {
+        res.render(viewName, todo);
+      });
+  } else {
+    res.status( 500);
+    res.render('error', {
+      message:  'Invalid id'
+    });
+  }
+}
+
+function validId(id) {
+  return !isNaN(id);
+}
 
 module.exports = router;
