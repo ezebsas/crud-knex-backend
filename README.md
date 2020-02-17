@@ -19,3 +19,10 @@ La aplicación usa:
 * [x] Actualizar un registro con PUT /todo:id
 * [x] Eliminar un registro con DELETE /todo/:id
 * [x] Redirigir al crear / actualizar / eliminar
+
+# Refactorizar un archivo router express
+
+* [x] Actualizar validaciones
+* [ ] Mover metodos comunes a carpeta lib
+* [ ] Mover consultas knex a carpeta db
+* [ ] Crear funciones reutilizables para mandar respuestas de error
