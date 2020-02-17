@@ -8,6 +8,7 @@ var methodOverride = require('method-override');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var todoRouter = require('./routes/todo');
+var todoAPI = require('./api/todoAPI');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(methodOverride('_method'));
 app.use('/', indexRouter);
 app.use('/todo', todoRouter);
 app.use('/users', usersRouter);
+app.use('/api/v1/todo', todoAPI);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
