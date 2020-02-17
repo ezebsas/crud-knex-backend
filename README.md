@@ -23,6 +23,6 @@ La aplicación usa:
 # Refactorizar un archivo router express
 
 * [x] Actualizar validaciones
-* [ ] Mover metodos comunes a carpeta lib
+* [x] Mover metodos comunes a carpeta lib
 * [ ] Mover consultas knex a carpeta db
 * [ ] Crear funciones reutilizables para mandar respuestas de error

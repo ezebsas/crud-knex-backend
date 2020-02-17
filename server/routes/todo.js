@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
+const validTodo = require('../../lib/validations').validTodo;
 
 /* This router is mounted at /todo */
 router.get('/', (req, res) => {
@@ -67,12 +68,6 @@ router.delete('/:id', (req, res) => {
   }
 });
 
-function validTodo(todo) {
-  return typeof todo.title == 'string' &&
-          todo.title.trim() != '' &&
-          typeof todo.priority != 'undefined' &&
-          !isNaN(todo.priority);
-}
 
 function respondAndRenderTodo(id, res, viewName) {
   if(validId(id)) {
