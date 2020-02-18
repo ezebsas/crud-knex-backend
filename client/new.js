@@ -6,7 +6,7 @@ $(() => {
 		$.post(API_URL, todo)
 			.then(result => {
 				console.log(result);
-				// redirectById(result.id);
+				redirectById(result.id);
 			}).catch(error => {
 				const $errorMessage = $('#errorMessage');
 				$errorMessage.text(error.responseJSON.message);

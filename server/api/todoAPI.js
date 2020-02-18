@@ -13,6 +13,20 @@ router.get('/', (req, res) => {
     })
 });
 
+router.get('/:id', (req, res) => {
+  const id = req.params.id;
+  if(validId(id)) {
+    queries.getOne(id).then(todo => {
+      res.json(todo);
+    });
+  } else {
+    res.status(404);
+    res.json({
+      message: 'Not Found'
+    });
+  }
+});
+
 router.post('/', (req,res) => {
   if(validTodo(req.body)){
     //insert into de DB
