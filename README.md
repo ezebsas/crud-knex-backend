@@ -25,4 +25,29 @@ La aplicación usa:
 * [x] Actualizar validaciones
 * [x] Mover metodos comunes a carpeta lib
 * [x] Mover consultas knex a carpeta db
-* [ ] Crear funciones reutilizables para mandar respuestas de error
+* [x] Crear funciones reutilizables para mandar respuestas de error
+
+
+# Construir una app Full Stack desacoplada: CRUD todo
+
+Usaremos:
+* Server:
+  * postgres for our database
+  * knex.js for our database migrations, seeds and queries.
+  * express.js for our JSON routes
+* Client:
+  * jQuery for DOM/AJAX
+  * boostrap for our UI
+
+
+## Full Stack Check List
+* [x] Agregar carpeta api y crear/montar router
+* [x] Listar todos los registros con GET /api/v1/todo
+* [ ] Agregar Bootstrap
+* [ ] Mostrar form nuevo en new.html
+* [ ] Crear un registro con POST /api/v1/todo
+* [ ] Mostrar un registro con GET /api/v1/todo/:id
+* [ ] Mostrar un form editar en edit.html?id=42
+* [ ] Actualizar un registro con PUT /api/v1/todo/:id
+* [ ] Eliminar un registro con DELETE /api/v1/todo/:id
+* [ ] Redirigir al create / update / delete
