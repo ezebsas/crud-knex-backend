@@ -47,7 +47,7 @@ Usaremos:
 * [x] Mostrar form nuevo en new.html
 * [x] Crear un registro con POST /api/v1/todo
 * [x] Mostrar un registro con GET /api/v1/todo/:id
-* [ ] Mostrar un form editar en edit.html?id=42
+* [x] Mostrar un form editar en edit.html?id=42
 * [ ] Actualizar un registro con PUT /api/v1/todo/:id
 * [ ] Eliminar un registro con DELETE /api/v1/todo/:id
 * [ ] Redirigir al crear / actualizar / eliminar
