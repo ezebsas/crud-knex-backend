@@ -55,4 +55,29 @@ router.post('/', (req,res) => {
   }
 })
 
+router.put('/:id', (req, res) => {
+  const id = req.params.id;
+  console.log(req.body);
+  if(validId(id)) {
+    const todo = {
+      title: req.body.title,
+      description: req.body.description,
+      priority: req.body.priority
+    };
+
+    queries
+      .update(id, todo)
+      .then(() => {
+        res.json({
+          message: '😊'
+        });
+      });
+  } else {
+    res.status(500);
+    res.json({
+      message: 'Invalid id'
+    })
+  }
+});
+
 module.exports = router;
