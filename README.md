@@ -45,9 +45,9 @@ Usaremos:
 * [x] Listar todos los registros con GET /api/v1/todo
 * [x] Agregar Bootstrap
 * [x] Mostrar form nuevo en new.html
-* [ ] Crear un registro con POST /api/v1/todo
+* [x] Crear un registro con POST /api/v1/todo
 * [ ] Mostrar un registro con GET /api/v1/todo/:id
 * [ ] Mostrar un form editar en edit.html?id=42
 * [ ] Actualizar un registro con PUT /api/v1/todo/:id
 * [ ] Eliminar un registro con DELETE /api/v1/todo/:id
-* [ ] Redirigir al create / update / delete
+* [ ] Redirigir al crear / actualizar / eliminar
