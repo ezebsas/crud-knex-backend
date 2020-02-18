@@ -80,4 +80,22 @@ router.put('/:id', (req, res) => {
   }
 });
 
+router.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  if(validId(id)) {
+    queries
+      .delete(id)
+      .then(() => {
+        res.json({
+          message: '🗑'
+        });
+      });
+  } else {
+    res.status(500);
+    res.json({
+      message: 'Invalid id'
+    })
+  }
+});
+
 module.exports = router;
