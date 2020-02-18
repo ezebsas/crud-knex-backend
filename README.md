@@ -43,8 +43,8 @@ Usaremos:
 ## Full Stack Check List
 * [x] Agregar carpeta api y crear/montar router
 * [x] Listar todos los registros con GET /api/v1/todo
-* [ ] Agregar Bootstrap
-* [ ] Mostrar form nuevo en new.html
+* [x] Agregar Bootstrap
+* [x] Mostrar form nuevo en new.html
 * [ ] Crear un registro con POST /api/v1/todo
 * [ ] Mostrar un registro con GET /api/v1/todo/:id
 * [ ] Mostrar un form editar en edit.html?id=42
